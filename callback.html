@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OAuth Callback - InstaForge Publisher</title>
+<style>
+  body { font-family: -apple-system, sans-serif; max-width: 700px; margin: 40px auto; padding: 0 20px; color: #333; line-height: 1.7; }
+  h1 { color: #1a1a1a; }
+  .code-box { background: #f5f5f5; border: 1px solid #ddd; border-radius: 8px; padding: 20px; margin: 20px 0; word-break: break-all; font-family: monospace; font-size: 14px; }
+  .success { color: #2e7d32; }
+  .error { color: #c62828; }
+</style>
+</head>
+<body>
+<h1>InstaForge Publisher</h1>
+<div id="result"></div>
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const code = params.get('code');
+  const error = params.get('error');
+  const el = document.getElementById('result');
+  if (code) {
+    el.innerHTML = '<p class="success">✅ Authorization successful!</p>' +
+      '<p>Your authorization code:</p>' +
+      '<div class="code-box">' + code + '</div>' +
+      '<p>Copy this code and paste it into your InstaForge terminal to complete setup.</p>';
+  } else if (error) {
+    el.innerHTML = '<p class="error">❌ Authorization failed: ' + error + '</p>' +
+      '<p>' + (params.get('error_description') || '') + '</p>';
+  } else {
+    el.innerHTML = '<p>Waiting for authorization...</p>';
+  }
+</script>
+</body>
+</html>
