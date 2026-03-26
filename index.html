@@ -3,19 +3,321 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>InstaForge Publisher - Legal</title>
+<title>InstaForge Publisher - Smart Content Management</title>
+<meta name="description" content="InstaForge Publisher helps creators manage and distribute original video content across TikTok, Instagram, YouTube, and Facebook from a single dashboard.">
 <style>
-  body { font-family: -apple-system, sans-serif; max-width: 700px; margin: 40px auto; padding: 0 20px; color: #333; line-height: 1.7; }
-  h1 { color: #1a1a1a; }
-  a { color: #E1306C; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; color: #1a1a2e; line-height: 1.6; }
+
+  /* Hero */
+  .hero {
+    background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+    color: #fff;
+    padding: 80px 20px 100px;
+    text-align: center;
+  }
+  .hero h1 {
+    font-size: 2.8rem;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    margin-bottom: 16px;
+  }
+  .hero h1 span { color: #e94560; }
+  .hero p {
+    font-size: 1.15rem;
+    color: #c4c4d4;
+    max-width: 600px;
+    margin: 0 auto 32px;
+  }
+  .badge-row {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+  }
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 24px;
+    padding: 8px 18px;
+    font-size: 0.9rem;
+    color: #ddd;
+  }
+  .badge svg { width: 18px; height: 18px; fill: currentColor; }
+
+  /* Features */
+  .features {
+    max-width: 960px;
+    margin: -50px auto 0;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+    gap: 24px;
+  }
+  .card {
+    background: #fff;
+    border-radius: 16px;
+    padding: 32px 28px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+    transition: transform 0.2s;
+  }
+  .card:hover { transform: translateY(-4px); }
+  .card-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    margin-bottom: 16px;
+  }
+  .card-icon.purple { background: #ede7f6; }
+  .card-icon.blue { background: #e3f2fd; }
+  .card-icon.red { background: #fce4ec; }
+  .card h3 { font-size: 1.1rem; margin-bottom: 8px; }
+  .card p { font-size: 0.95rem; color: #555; }
+
+  /* How it works */
+  .section {
+    max-width: 800px;
+    margin: 64px auto;
+    padding: 0 20px;
+  }
+  .section h2 {
+    font-size: 1.8rem;
+    text-align: center;
+    margin-bottom: 40px;
+    color: #1a1a2e;
+  }
+  .steps {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+  .step {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+  }
+  .step-num {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #302b63, #e94560);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1rem;
+  }
+  .step-text h4 { font-size: 1.05rem; margin-bottom: 4px; }
+  .step-text p { font-size: 0.92rem; color: #666; }
+
+  /* Platforms */
+  .platforms {
+    background: #f7f7fb;
+    padding: 64px 20px;
+    text-align: center;
+  }
+  .platforms h2 { font-size: 1.8rem; margin-bottom: 12px; }
+  .platforms p { color: #666; margin-bottom: 36px; }
+  .platform-grid {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  .platform-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.95rem;
+    color: #444;
+    font-weight: 500;
+  }
+  .platform-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.6rem;
+    color: #fff;
+  }
+  .pi-tiktok { background: #010101; }
+  .pi-ig { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
+  .pi-yt { background: #FF0000; }
+  .pi-fb { background: #1877F2; }
+
+  /* Legal footer */
+  .legal {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 48px 20px;
+    text-align: center;
+  }
+  .legal h2 { font-size: 1.4rem; margin-bottom: 20px; }
+  .legal-links { display: flex; justify-content: center; gap: 32px; flex-wrap: wrap; }
+  .legal-links a {
+    color: #302b63;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 10px 24px;
+    border: 2px solid #302b63;
+    border-radius: 8px;
+    transition: all 0.2s;
+  }
+  .legal-links a:hover { background: #302b63; color: #fff; }
+
+  /* Footer */
+  footer {
+    background: #1a1a2e;
+    color: #888;
+    text-align: center;
+    padding: 28px 20px;
+    font-size: 0.85rem;
+  }
+  footer a { color: #aaa; text-decoration: none; }
+  footer a:hover { color: #fff; }
+
+  @media (max-width: 600px) {
+    .hero h1 { font-size: 2rem; }
+    .hero p { font-size: 1rem; }
+    .features { grid-template-columns: 1fr; margin-top: -30px; }
+    .platform-grid { gap: 24px; }
+  }
 </style>
 </head>
 <body>
-<h1>InstaForge Publisher</h1>
-<p>Content management tool for publishing devotional and educational video content.</p>
-<ul>
-  <li><a href="terms.html">Terms of Service</a></li>
-  <li><a href="privacy.html">Privacy Policy</a></li>
-</ul>
+
+<!-- Hero -->
+<section class="hero">
+  <h1>Insta<span>Forge</span> Publisher</h1>
+  <p>A smart content management platform that helps creators produce, schedule, and publish original video content across all major social platforms from one place.</p>
+  <div class="badge-row">
+    <div class="badge">
+      <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+      Multi-Platform
+    </div>
+    <div class="badge">
+      <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+      AI-Assisted
+    </div>
+    <div class="badge">
+      <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+      Automated Scheduling
+    </div>
+  </div>
+</section>
+
+<!-- Feature Cards -->
+<div class="features">
+  <div class="card">
+    <div class="card-icon purple">&#127916;</div>
+    <h3>Video Production</h3>
+    <p>Generate and assemble professional short-form and long-form video content with AI-powered image generation, text overlays, and audio mixing.</p>
+  </div>
+  <div class="card">
+    <div class="card-icon blue">&#128197;</div>
+    <h3>Smart Scheduling</h3>
+    <p>Queue content and schedule posts across platforms with optimal timing. Automated daily publishing with intelligent content rotation.</p>
+  </div>
+  <div class="card">
+    <div class="card-icon red">&#128200;</div>
+    <h3>Analytics Dashboard</h3>
+    <p>Track engagement metrics, follower growth, and content performance across all connected channels in a unified dashboard.</p>
+  </div>
+</div>
+
+<!-- How it works -->
+<div class="section">
+  <h2>How It Works</h2>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-text">
+        <h4>Create Content</h4>
+        <p>Write scripts or provide topics. InstaForge generates professional video content using AI image generation, text-to-speech narration, and cinematic assembly.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-text">
+        <h4>Review &amp; Approve</h4>
+        <p>Preview generated content in the review dashboard. Approve, edit, or regenerate before publishing. Full control over what goes live.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-text">
+        <h4>Publish Everywhere</h4>
+        <p>Publish approved content to TikTok, Instagram Reels, YouTube Shorts, and Facebook with platform-optimized formatting. One click, all platforms.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <div class="step-text">
+        <h4>Track Performance</h4>
+        <p>Monitor views, engagement, and follower growth across all channels. Daily metrics reports delivered automatically.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Supported Platforms -->
+<section class="platforms">
+  <h2>Supported Platforms</h2>
+  <p>Publish natively to all major video platforms via official APIs.</p>
+  <div class="platform-grid">
+    <div class="platform-item">
+      <div class="platform-icon pi-tiktok">&#9835;</div>
+      TikTok
+    </div>
+    <div class="platform-item">
+      <div class="platform-icon pi-ig">&#128247;</div>
+      Instagram
+    </div>
+    <div class="platform-item">
+      <div class="platform-icon pi-yt">&#9654;</div>
+      YouTube
+    </div>
+    <div class="platform-item">
+      <div class="platform-icon pi-fb">f</div>
+      Facebook
+    </div>
+  </div>
+</section>
+
+<!-- Legal -->
+<div class="legal">
+  <h2>Legal</h2>
+  <div class="legal-links">
+    <a href="privacy.html">Privacy Policy</a>
+    <a href="terms.html">Terms of Service</a>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer>
+  <p>&copy; 2026 InstaForge Publisher. All rights reserved.</p>
+  <p style="margin-top: 8px;">
+    <a href="privacy.html">Privacy</a> &nbsp;&middot;&nbsp;
+    <a href="terms.html">Terms</a> &nbsp;&middot;&nbsp;
+    <a href="mailto:contact@instaforge.app">Contact</a>
+  </p>
+</footer>
+
 </body>
 </html>
